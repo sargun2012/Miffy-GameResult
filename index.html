@@ -1,0 +1,408 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Miffy Challenge — Final Results</title>
+
+<style>
+:root {
+  --pink: #d98eae;
+  --deep-pink: #a95479;
+  --light-pink: #fff2f7;
+  --green: #6c8967;
+  --text: #594b55;
+  --white: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  color: var(--text);
+  background: linear-gradient(180deg, #fff7fa, #f5edf2);
+  overflow-x: hidden;
+}
+
+/* Live snowfall */
+.snow {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.snowflake {
+  position: absolute;
+  top: -20px;
+  color: white;
+  opacity: 0.8;
+  text-shadow: 0 0 5px #d8b8c8;
+  animation: snowfall linear infinite;
+}
+
+@keyframes snowfall {
+  to {
+    transform: translateY(110vh) translateX(35px) rotate(360deg);
+  }
+}
+
+header {
+  text-align: center;
+  padding: 35px 15px 20px;
+}
+
+.miffy {
+  font-size: 48px;
+  margin-bottom: 8px;
+}
+
+h1 {
+  color: var(--deep-pink);
+  font-size: clamp(30px, 6vw, 48px);
+  margin: 8px 0;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: #8b7783;
+}
+
+.container {
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 15px;
+}
+
+.card {
+  background: var(--white);
+  border: 1px solid #f0d8e3;
+  border-radius: 24px;
+  padding: 25px;
+  margin-bottom: 22px;
+  box-shadow: 0 8px 25px rgba(169, 84, 121, 0.07);
+}
+
+.card h2 {
+  color: var(--deep-pink);
+  margin-top: 0;
+  font-size: 25px;
+}
+
+.champions {
+  display: grid;
+  gap: 14px;
+}
+
+.champion {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 17px;
+  border-radius: 18px;
+  background: var(--light-pink);
+  border: 1px solid #f3dce7;
+}
+
+.champion:first-child {
+  background: linear-gradient(120deg, #fff2c9, #fff8e8);
+}
+
+.champion:nth-child(2) {
+  background: linear-gradient(120deg, #f0f0f5, #fafaff);
+}
+
+.champion:nth-child(3) {
+  background: linear-gradient(120deg, #f8e5d9, #fff5ef);
+}
+
+.medal {
+  font-size: 32px;
+}
+
+.champion-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.champion-info strong {
+  display: block;
+  font-size: 18px;
+  overflow-wrap: anywhere;
+}
+
+.champion-info span {
+  display: block;
+  margin-top: 5px;
+  font-size: 14px;
+  color: #887681;
+}
+
+.prize {
+  color: var(--green);
+  font-weight: bold;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 320px;
+}
+
+th {
+  text-align: left;
+  padding: 13px 10px;
+  color: #9c8491;
+  font-size: 13px;
+  border-bottom: 2px solid #f2e6ec;
+}
+
+td {
+  padding: 14px 10px;
+  border-bottom: 1px solid #f4e9ef;
+  font-size: 15px;
+}
+
+td:first-child {
+  color: var(--deep-pink);
+  font-weight: bold;
+}
+
+td:last-child {
+  text-align: right;
+  color: var(--green);
+  font-weight: bold;
+}
+
+tbody tr:nth-child(2) {
+  background: #fff4f8;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.reward-box {
+  background: #edf5e9;
+  color: #4d7048;
+  border-radius: 18px;
+  padding: 18px;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.reward-box strong {
+  font-size: 22px;
+}
+
+.distribution {
+  background: #fff4f8;
+  border: 1px solid #f0d8e3;
+  color: var(--deep-pink);
+  border-radius: 18px;
+  padding: 20px;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.distribution strong {
+  font-size: 19px;
+}
+
+footer {
+  text-align: center;
+  padding: 25px 15px 35px;
+  color: #9b8290;
+  font-size: 13px;
+}
+
+@media (max-width: 520px) {
+  .card {
+    padding: 18px;
+  }
+
+  .champion {
+    gap: 10px;
+    padding: 13px;
+  }
+
+  .champion-info strong {
+    font-size: 15px;
+  }
+
+  .prize {
+    font-size: 13px;
+  }
+
+  td, th {
+    padding: 12px 7px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="snow" id="snow"></div>
+
+<header>
+  <div class="miffy">🐰</div>
+  <h1>Miffy Challenge</h1>
+  <div class="subtitle">Final Results · October 2026</div>
+</header>
+
+<main class="container">
+
+  <section class="card">
+    <h2>🥕 The Challenge Has Ended!</h2>
+    <p>
+      The Miffy Challenge has officially come to an end!
+      A big thank-you to everyone who participated in the
+      Miffy Carrot Run. Your enthusiasm made this challenge special!
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>🏆 Top 3 Champions</h2>
+
+    <div class="champions">
+
+      <div class="champion">
+        <div class="medal">🥇</div>
+        <div class="champion-info">
+          <strong>@ArcticFox-01</strong>
+          <span>3,233 Points</span>
+        </div>
+        <div class="prize">200 Cheers</div>
+      </div>
+
+      <div class="champion">
+        <div class="medal">🥈</div>
+        <div class="champion-info">
+          <strong>@pbtranganh</strong>
+          <span>941 Points</span>
+        </div>
+        <div class="prize">125 Cheers</div>
+      </div>
+
+      <div class="champion">
+        <div class="medal">🥉</div>
+        <div class="champion-info">
+          <strong>@MrImpossable</strong>
+          <span>459 Points</span>
+        </div>
+        <div class="prize">67 Cheers</div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>🥕 Final Leaderboard</h2>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Player</th>
+            <th>Points</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr><td>1</td><td>@ArcticFox-01</td><td>3,233</td></tr>
+          <tr><td>2</td><td>@Mid-KnightMare-25</td><td>1,516</td></tr>
+          <tr><td>3</td><td>@pbtranganh</td><td>941</td></tr>
+          <tr><td>4</td><td>@MrImpossable</td><td>459</td></tr>
+          <tr><td>5</td><td>@hiyoulittle</td><td>161</td></tr>
+          <tr><td>6</td><td>@ItzmeRosie27</td><td>126</td></tr>
+          <tr><td>7</td><td>@Xo_Dinuli_D_oX</td><td>89</td></tr>
+          <tr><td>8</td><td>@yoghurt_22</td><td>67</td></tr>
+          <tr><td>9</td><td>@the_underdogs_10</td><td>66</td></tr>
+          <tr><td>10</td><td>@kittyandbunny</td><td>65</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>🎉 Participation Rewards</h2>
+
+    <p>
+      Every participant who joined the challenge will receive
+      25 Cheers as a token of appreciation.
+    </p>
+
+    <div class="reward-box">
+      <strong>25 Cheers</strong>
+      <p>For every participant</p>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>📢 Cheers Distribution</h2>
+
+    <p>
+      All participants will receive their respective Cheers by
+      <strong>November 5, 2026.</strong>
+    </p>
+
+    <div class="distribution">
+      <strong>November 5, 2026</strong>
+      <p>Cheers distribution deadline</p>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>🌸 Thank You, Miffy Club!</h2>
+
+    <p>
+      Congratulations to our winners! And thank you to every
+      Miffy Club member who participated and made the challenge fun.
+    </p>
+
+    <p>
+      Keep hopping, keep collecting carrots, and stay tuned
+      for our next challenge!
+    </p>
+
+    <strong>— Miffy Club</strong>
+  </section>
+
+</main>
+
+<footer>
+  © Miffy Club · Miffy Challenge Results
+</footer>
+
+<script>
+const snowContainer = document.getElementById("snow");
+
+for (let i = 0; i < 55; i++) {
+  const flake = document.createElement("div");
+  flake.className = "snowflake";
+  flake.textContent = "❄";
+
+  flake.style.left = Math.random() * 100 + "%";
+  flake.style.fontSize = (8 + Math.random() * 13) + "px";
+  flake.style.animationDuration = (7 + Math.random() * 12) + "s";
+  flake.style.animationDelay = (Math.random() * 10) + "s";
+
+  snowContainer.appendChild(flake);
+}
+</script>
+
+</body>
+</html>
