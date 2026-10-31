@@ -27,7 +27,6 @@ body {
   overflow-x: hidden;
 }
 
-/* Live snowfall */
 .snow {
   position: fixed;
   inset: 0;
@@ -51,16 +50,17 @@ body {
   }
 }
 
-/* Header */
 header {
   text-align: center;
   padding: 30px 15px 20px;
 }
 
-.miffy {
-  font-size: 58px;
-  line-height: 1.2;
-  margin-bottom: 8px;
+.miffy-image {
+  display: block;
+  width: 125px;
+  max-width: 40%;
+  height: auto;
+  margin: 0 auto 8px;
 }
 
 h1 {
@@ -74,7 +74,6 @@ h1 {
   color: #8b7783;
 }
 
-/* Main layout */
 .container {
   max-width: 850px;
   margin: 0 auto;
@@ -96,17 +95,16 @@ h1 {
   font-size: 25px;
 }
 
-/* Champions */
 .champions {
   display: grid;
-  gap: 14px;
+  gap: 12px;
 }
 
 .champion {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 16px;
+  gap: 10px;
+  padding: 15px;
   border-radius: 18px;
   background: var(--light-pink);
   border: 1px solid #f3dce7;
@@ -135,7 +133,7 @@ h1 {
 
 .champion-info strong {
   display: block;
-  font-size: 17px;
+  font-size: 16px;
   overflow-wrap: anywhere;
 }
 
@@ -150,15 +148,12 @@ h1 {
   color: var(--green);
   font-weight: bold;
   text-align: right;
-  white-space: nowrap;
-  font-size: 14px;
+  font-size: 13px;
+  white-space: normal;
+  max-width: 45%;
 }
 
 /* Compact leaderboard */
-.table-wrap {
-  width: 100%;
-}
-
 table {
   width: 100%;
   border-collapse: collapse;
@@ -207,7 +202,7 @@ td:last-child {
   font-weight: bold;
 }
 
-/* Keep all player rows unhighlighted */
+/* No highlighted names */
 tbody tr {
   background: transparent;
 }
@@ -216,7 +211,6 @@ tbody tr:last-child td {
   border-bottom: none;
 }
 
-/* Reward sections */
 .reward-box {
   background: #edf5e9;
   color: #4d7048;
@@ -244,6 +238,14 @@ tbody tr:last-child td {
   font-size: 19px;
 }
 
+.bottom-miffy {
+  display: block;
+  width: 145px;
+  max-width: 45%;
+  height: auto;
+  margin: 15px auto 0;
+}
+
 footer {
   text-align: center;
   padding: 25px 15px 35px;
@@ -251,7 +253,6 @@ footer {
   font-size: 13px;
 }
 
-/* Mobile layout */
 @media (max-width: 520px) {
   .container {
     padding: 10px;
@@ -267,7 +268,7 @@ footer {
   }
 
   .champion {
-    gap: 8px;
+    gap: 7px;
     padding: 12px;
   }
 
@@ -276,7 +277,7 @@ footer {
   }
 
   .prize {
-    font-size: 12px;
+    font-size: 11px;
   }
 
   th {
@@ -298,10 +299,6 @@ footer {
   th {
     font-size: 11px;
   }
-
-  .prize {
-    font-size: 11px;
-  }
 }
 </style>
 </head>
@@ -311,7 +308,12 @@ footer {
 <div class="snow" id="snow"></div>
 
 <header>
-  <div class="miffy" aria-label="Bunny">🐰</div>
+  <img
+    src="miffy-carrot.png"
+    alt="Miffy holding a carrot"
+    class="miffy-image"
+  >
+
   <h1>Miffy Challenge</h1>
   <div class="subtitle">Final Results · October 2026</div>
 </header>
@@ -320,7 +322,6 @@ footer {
 
   <section class="card">
     <h2>🥕 The Challenge Has Ended!</h2>
-
     <p>
       The Miffy Challenge has officially come to an end!
       A big thank-you to everyone who participated in the
@@ -335,35 +336,35 @@ footer {
 
       <div class="champion">
         <div class="medal">🥇</div>
-
         <div class="champion-info">
           <strong>@ArcticFox-01</strong>
-          <span>3,233 Points</span>
+          <span>3,873 Points</span>
         </div>
-
-        <div class="prize">225 Cheers</div>
+        <div class="prize">
+          200 Cheers + 25 Cheers = 225 Cheers
+        </div>
       </div>
 
       <div class="champion">
         <div class="medal">🥈</div>
-
         <div class="champion-info">
           <strong>@pbtranganh</strong>
           <span>941 Points</span>
         </div>
-
-        <div class="prize">150 Cheers</div>
+        <div class="prize">
+          125 Cheers + 25 Cheers = 150 Cheers
+        </div>
       </div>
 
       <div class="champion">
         <div class="medal">🥉</div>
-
         <div class="champion-info">
           <strong>@MrImpossable</strong>
           <span>459 Points</span>
         </div>
-
-        <div class="prize">92 Cheers</div>
+        <div class="prize">
+          67 Cheers + 25 Cheers = 92 Cheers
+        </div>
       </div>
 
     </div>
@@ -372,30 +373,28 @@ footer {
   <section class="card">
     <h2>🥕 Final Leaderboard</h2>
 
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>Rank</th>
-            <th>Player</th>
-            <th>Points</th>
-          </tr>
-        </thead>
+    <table>
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Player</th>
+          <th>Points</th>
+        </tr>
+      </thead>
 
-        <tbody>
-          <tr><td>1</td><td>@ArcticFox-01</td><td>3,233</td></tr>
-          <tr><td>2</td><td>@Mid-KnightMare-25</td><td>1,516</td></tr>
-          <tr><td>3</td><td>@pbtranganh</td><td>941</td></tr>
-          <tr><td>4</td><td>@MrImpossable</td><td>459</td></tr>
-          <tr><td>5</td><td>@hiyoulittle</td><td>161</td></tr>
-          <tr><td>6</td><td>@ItzmeRosie27</td><td>126</td></tr>
-          <tr><td>7</td><td>@Xo_Dinuli_D_oX</td><td>89</td></tr>
-          <tr><td>8</td><td>@yoghurt_22</td><td>67</td></tr>
-          <tr><td>9</td><td>@the_underdogs_10</td><td>66</td></tr>
-          <tr><td>10</td><td>@kittyandbunny</td><td>65</td></tr>
-        </tbody>
-      </table>
-    </div>
+      <tbody>
+        <tr><td>1</td><td>@ArcticFox-01</td><td>3,873</td></tr>
+        <tr><td>2</td><td>@Mid-KnightMare-25</td><td>1,516</td></tr>
+        <tr><td>3</td><td>@pbtranganh</td><td>941</td></tr>
+        <tr><td>4</td><td>@MrImpossable</td><td>459</td></tr>
+        <tr><td>5</td><td>@hiyoulittle</td><td>161</td></tr>
+        <tr><td>6</td><td>@ItzmeRosie27</td><td>126</td></tr>
+        <tr><td>7</td><td>@Xo_Dinuli_D_oX</td><td>89</td></tr>
+        <tr><td>8</td><td>@yoghurt_22</td><td>67</td></tr>
+        <tr><td>9</td><td>@the_underdogs_10</td><td>66</td></tr>
+        <tr><td>10</td><td>@kittyandbunny</td><td>65</td></tr>
+      </tbody>
+    </table>
   </section>
 
   <section class="card">
@@ -403,7 +402,7 @@ footer {
 
     <p>
       Every participant who joined the challenge will receive
-      25 Cheers as a token of appreciation.
+      25 Cheers.
     </p>
 
     <div class="reward-box">
@@ -440,6 +439,12 @@ footer {
     </p>
 
     <strong>— Miffy Club</strong>
+
+    <img
+      src="miffy-carrot.png"
+      alt="Miffy with a carrot"
+      class="bottom-miffy"
+    >
   </section>
 
 </main>
@@ -453,6 +458,7 @@ const snowContainer = document.getElementById("snow");
 
 for (let i = 0; i < 55; i++) {
   const flake = document.createElement("div");
+
   flake.className = "snowflake";
   flake.textContent = "❄";
 
