@@ -27,6 +27,7 @@ body {
   overflow-x: hidden;
 }
 
+/* Live snowfall */
 .snow {
   position: fixed;
   inset: 0;
@@ -50,6 +51,7 @@ body {
   }
 }
 
+/* Header */
 header {
   text-align: center;
   padding: 30px 15px 20px;
@@ -74,6 +76,7 @@ h1 {
   color: #8b7783;
 }
 
+/* Main layout */
 .container {
   max-width: 850px;
   margin: 0 auto;
@@ -95,6 +98,7 @@ h1 {
   font-size: 25px;
 }
 
+/* Champions */
 .champions {
   display: grid;
   gap: 12px;
@@ -124,6 +128,7 @@ h1 {
 
 .medal {
   font-size: 30px;
+  flex-shrink: 0;
 }
 
 .champion-info {
@@ -148,12 +153,12 @@ h1 {
   color: var(--green);
   font-weight: bold;
   text-align: right;
-  font-size: 13px;
-  white-space: normal;
-  max-width: 45%;
+  font-size: 14px;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
-/* Compact leaderboard */
+/* Leaderboard */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -202,7 +207,7 @@ td:last-child {
   font-weight: bold;
 }
 
-/* No highlighted names */
+/* No highlighted leaderboard names */
 tbody tr {
   background: transparent;
 }
@@ -211,6 +216,7 @@ tbody tr:last-child td {
   border-bottom: none;
 }
 
+/* Rewards */
 .reward-box {
   background: #edf5e9;
   color: #4d7048;
@@ -238,14 +244,6 @@ tbody tr:last-child td {
   font-size: 19px;
 }
 
-.bottom-miffy {
-  display: block;
-  width: 145px;
-  max-width: 45%;
-  height: auto;
-  margin: 15px auto 0;
-}
-
 footer {
   text-align: center;
   padding: 25px 15px 35px;
@@ -253,6 +251,7 @@ footer {
   font-size: 13px;
 }
 
+/* Mobile */
 @media (max-width: 520px) {
   .container {
     padding: 10px;
@@ -276,6 +275,10 @@ footer {
     font-size: 14px;
   }
 
+  .champion-info span {
+    font-size: 12px;
+  }
+
   .prize {
     font-size: 11px;
   }
@@ -291,13 +294,30 @@ footer {
   }
 }
 
-@media (max-width: 360px) {
-  td {
+@media (max-width: 380px) {
+  .champion {
+    gap: 5px;
+    padding: 10px;
+  }
+
+  .medal {
+    font-size: 24px;
+  }
+
+  .champion-info strong {
     font-size: 12px;
   }
 
-  th {
+  .champion-info span {
     font-size: 11px;
+  }
+
+  .prize {
+    font-size: 10px;
+  }
+
+  td {
+    font-size: 12px;
   }
 }
 </style>
@@ -322,6 +342,7 @@ footer {
 
   <section class="card">
     <h2>🥕 The Challenge Has Ended!</h2>
+
     <p>
       The Miffy Challenge has officially come to an end!
       A big thank-you to everyone who participated in the
@@ -336,35 +357,35 @@ footer {
 
       <div class="champion">
         <div class="medal">🥇</div>
+
         <div class="champion-info">
           <strong>@ArcticFox-01</strong>
           <span>3,873 Points</span>
         </div>
-        <div class="prize">
-          200 Cheers + 25 Cheers = 225 Cheers
-        </div>
+
+        <div class="prize">200 Cheers</div>
       </div>
 
       <div class="champion">
         <div class="medal">🥈</div>
+
         <div class="champion-info">
           <strong>@pbtranganh</strong>
           <span>941 Points</span>
         </div>
-        <div class="prize">
-          125 Cheers + 25 Cheers = 150 Cheers
-        </div>
+
+        <div class="prize">125 Cheers</div>
       </div>
 
       <div class="champion">
         <div class="medal">🥉</div>
+
         <div class="champion-info">
           <strong>@MrImpossable</strong>
           <span>459 Points</span>
         </div>
-        <div class="prize">
-          67 Cheers + 25 Cheers = 92 Cheers
-        </div>
+
+        <div class="prize">67 Cheers</div>
       </div>
 
     </div>
@@ -442,8 +463,8 @@ footer {
 
     <img
       src="miffy-carrot.png"
-      alt="Miffy with a carrot"
-      class="bottom-miffy"
+      alt="Miffy holding a carrot"
+      class="miffy-image"
     >
   </section>
 
