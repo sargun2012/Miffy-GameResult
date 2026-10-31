@@ -13,7 +13,6 @@
   --light-pink: #fff2f7;
   --green: #6c8967;
   --text: #594b55;
-  --white: #ffffff;
 }
 
 * {
@@ -52,13 +51,15 @@ body {
   }
 }
 
+/* Header */
 header {
   text-align: center;
-  padding: 35px 15px 20px;
+  padding: 30px 15px 20px;
 }
 
 .miffy {
-  font-size: 48px;
+  font-size: 58px;
+  line-height: 1.2;
   margin-bottom: 8px;
 }
 
@@ -73,6 +74,7 @@ h1 {
   color: #8b7783;
 }
 
+/* Main layout */
 .container {
   max-width: 850px;
   margin: 0 auto;
@@ -80,7 +82,7 @@ h1 {
 }
 
 .card {
-  background: var(--white);
+  background: white;
   border: 1px solid #f0d8e3;
   border-radius: 24px;
   padding: 25px;
@@ -94,6 +96,7 @@ h1 {
   font-size: 25px;
 }
 
+/* Champions */
 .champions {
   display: grid;
   gap: 14px;
@@ -102,8 +105,8 @@ h1 {
 .champion {
   display: flex;
   align-items: center;
-  gap: 15px;
-  padding: 17px;
+  gap: 12px;
+  padding: 16px;
   border-radius: 18px;
   background: var(--light-pink);
   border: 1px solid #f3dce7;
@@ -122,7 +125,7 @@ h1 {
 }
 
 .medal {
-  font-size: 32px;
+  font-size: 30px;
 }
 
 .champion-info {
@@ -132,7 +135,7 @@ h1 {
 
 .champion-info strong {
   display: block;
-  font-size: 18px;
+  font-size: 17px;
   overflow-wrap: anywhere;
 }
 
@@ -148,30 +151,50 @@ h1 {
   font-weight: bold;
   text-align: right;
   white-space: nowrap;
+  font-size: 14px;
 }
 
+/* Compact leaderboard */
 .table-wrap {
-  overflow-x: auto;
+  width: 100%;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 320px;
+  table-layout: fixed;
 }
 
 th {
   text-align: left;
-  padding: 13px 10px;
+  padding: 12px 5px;
   color: #9c8491;
   font-size: 13px;
   border-bottom: 2px solid #f2e6ec;
 }
 
 td {
-  padding: 14px 10px;
+  padding: 13px 5px;
   border-bottom: 1px solid #f4e9ef;
   font-size: 15px;
+  overflow-wrap: anywhere;
+}
+
+th:nth-child(1),
+td:nth-child(1) {
+  width: 13%;
+}
+
+th:nth-child(2),
+td:nth-child(2) {
+  width: 59%;
+}
+
+th:nth-child(3),
+td:nth-child(3) {
+  width: 28%;
+  text-align: right;
+  white-space: nowrap;
 }
 
 td:first-child {
@@ -180,19 +203,20 @@ td:first-child {
 }
 
 td:last-child {
-  text-align: right;
   color: var(--green);
   font-weight: bold;
 }
 
-tbody tr:nth-child(2) {
-  background: #fff4f8;
+/* Keep all player rows unhighlighted */
+tbody tr {
+  background: transparent;
 }
 
 tbody tr:last-child td {
   border-bottom: none;
 }
 
+/* Reward sections */
 .reward-box {
   background: #edf5e9;
   color: #4d7048;
@@ -227,26 +251,56 @@ footer {
   font-size: 13px;
 }
 
+/* Mobile layout */
 @media (max-width: 520px) {
+  .container {
+    padding: 10px;
+  }
+
   .card {
-    padding: 18px;
+    padding: 17px;
+    border-radius: 21px;
+  }
+
+  .card h2 {
+    font-size: 22px;
   }
 
   .champion {
-    gap: 10px;
-    padding: 13px;
+    gap: 8px;
+    padding: 12px;
   }
 
   .champion-info strong {
-    font-size: 15px;
+    font-size: 14px;
   }
 
   .prize {
-    font-size: 13px;
+    font-size: 12px;
   }
 
-  td, th {
-    padding: 12px 7px;
+  th {
+    font-size: 12px;
+    padding: 10px 3px;
+  }
+
+  td {
+    font-size: 13px;
+    padding: 12px 3px;
+  }
+}
+
+@media (max-width: 360px) {
+  td {
+    font-size: 12px;
+  }
+
+  th {
+    font-size: 11px;
+  }
+
+  .prize {
+    font-size: 11px;
   }
 }
 </style>
@@ -257,7 +311,7 @@ footer {
 <div class="snow" id="snow"></div>
 
 <header>
-  <div class="miffy">🐰</div>
+  <div class="miffy" aria-label="Bunny">🐰</div>
   <h1>Miffy Challenge</h1>
   <div class="subtitle">Final Results · October 2026</div>
 </header>
@@ -266,6 +320,7 @@ footer {
 
   <section class="card">
     <h2>🥕 The Challenge Has Ended!</h2>
+
     <p>
       The Miffy Challenge has officially come to an end!
       A big thank-you to everyone who participated in the
@@ -280,29 +335,35 @@ footer {
 
       <div class="champion">
         <div class="medal">🥇</div>
+
         <div class="champion-info">
           <strong>@ArcticFox-01</strong>
           <span>3,233 Points</span>
         </div>
-        <div class="prize">200 Cheers</div>
+
+        <div class="prize">225 Cheers</div>
       </div>
 
       <div class="champion">
         <div class="medal">🥈</div>
+
         <div class="champion-info">
           <strong>@pbtranganh</strong>
           <span>941 Points</span>
         </div>
-        <div class="prize">125 Cheers</div>
+
+        <div class="prize">150 Cheers</div>
       </div>
 
       <div class="champion">
         <div class="medal">🥉</div>
+
         <div class="champion-info">
           <strong>@MrImpossable</strong>
           <span>459 Points</span>
         </div>
-        <div class="prize">67 Cheers</div>
+
+        <div class="prize">92 Cheers</div>
       </div>
 
     </div>
